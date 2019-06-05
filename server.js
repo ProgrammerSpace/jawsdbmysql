@@ -22,9 +22,10 @@ app.get("/", function (req, res) {
 app.post("/addName", function (req, res) {
     var newName = req.body;
     console.log(newName);
-    res.json(newName);
 
-    addName(newName.fname, newName.lname);
+    if (addName(newName.fname, newName.lname)) {
+        res.json(newName);
+    };
 
 });
 
