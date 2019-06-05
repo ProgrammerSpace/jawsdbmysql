@@ -15,7 +15,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/display", function (req, res) {
-    console.log("Fetching data...");
+    res.send("Fetching data...");
     var data = fetchData();
     res.json(data);
 });
