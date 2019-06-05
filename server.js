@@ -66,7 +66,7 @@ function fetchData() {
             if (err) {
                 return console.log(err);
             }
-            console.log("Fetch successful!");
+            console.log(res);
             return res;
         });
 }
