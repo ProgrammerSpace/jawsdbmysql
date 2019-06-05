@@ -14,18 +14,17 @@ app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// app.get("/display", function (req, res) {
-//     var data = fetchData();
-//     res.json(data);
-// });
+app.get("/display", function (req, res) {
+    var data = fetchData();
+    res.json(data);
+});
 
 app.post("/addName", function (req, res) {
     var newName = req.body;
     console.log(newName);
+    res.json(newName);
 
-    if (addName(newName.fname, newName.lname)) {
-        res.json(newName);
-    };
+    addName(newName.fname, newName.lname);
 
 });
 
@@ -57,5 +56,17 @@ function addName(fn, ln) {
                 return console.log(err);
             }
             console.log(res.affectedRows + " name inserted!\n");
+        });
+}
+
+function fetchData() {
+    connection.query(
+        "SELECT * FROM name",
+        function (err, res) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log("Fetch successful!");
+            return res;
         });
 }
