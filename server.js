@@ -15,7 +15,8 @@ app.get("/", function (req, res) {
 });
 
 app.get("/display", function (req, res) {
-    res.send("works!");
+    var data = fetchData();
+    res.json(data);
 });
 
 app.post("/addName", function (req, res) {
@@ -55,5 +56,17 @@ function addName(fn, ln) {
                 return console.log(err);
             }
             console.log(res.affectedRows + " name inserted!\n");
+        });
+}
+
+function fetchData() {
+    connection.query(
+        "SELECT * FROM name",
+        function (err, res) {
+            if (err) {
+                return console.log(err);
+            }
+            return res;
+            console.log("Fetch success");
         });
 }
