@@ -15,8 +15,8 @@ app.get("/", function (req, res) {
 });
 
 app.get("/display", function (req, res) {
-    var data = fetchData();
-    res.json(data);
+    fetchData();
+    // res.json(data);
 });
 
 app.post("/addName", function (req, res) {
@@ -66,7 +66,7 @@ function fetchData() {
             if (err) {
                 return console.log(err);
             }
-            return res;
             console.log("Fetch success");
+            console.log(res);
         });
 }
