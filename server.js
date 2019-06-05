@@ -14,6 +14,10 @@ app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
+app.get("/display", function (req, res) {
+    alert("works!");
+});
+
 app.post("/addName", function (req, res) {
     var newName = req.body;
     console.log(newName);
