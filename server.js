@@ -15,8 +15,9 @@ app.get("/", function (req, res) {
 });
 
 app.get("/display", function (req, res) {
-    // fetchData();
-    res.json(fetchData);
+    var data = fetchData();
+    console.log(data);
+    // res.json(data);
 });
 
 app.post("/addName", function (req, res) {
