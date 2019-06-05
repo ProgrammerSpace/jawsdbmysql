@@ -19,7 +19,7 @@ app.post("/addName", function (req, res) {
     console.log(newName);
     res.json(newName);
 
-    // addName(newName.fname, newName.lname);
+    addName(newName.fname, newName.lname);
 
 });
 
@@ -39,17 +39,17 @@ connection.connect(function (err) {
     console.log("connected as id " + connection.threadId + "\n");
 });
 
-// function addName(fn, ln) {
-//     connection.query(
-//         "INSERT INTO name SET ?",
-//         {
-//             fname: fn,
-//             lname: ln,
-//         },
-//         function (err, res) {
-//             if (err) {
-//                 return console.log(err);
-//             }
-//             console.log(res.affectedRows + " name inserted!\n");
-//         });
-// }
+function addName(fn, ln) {
+    connection.query(
+        "INSERT INTO name SET ?",
+        {
+            fname: fn,
+            lname: ln,
+        },
+        function (err, res) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log(res.affectedRows + " name inserted!\n");
+        });
+}
