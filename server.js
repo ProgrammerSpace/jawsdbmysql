@@ -15,7 +15,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/display", function (req, res) {
-    alert("works!");
+    res.send("works!");
 });
 
 app.post("/addName", function (req, res) {
