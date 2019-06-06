@@ -15,9 +15,16 @@ app.get("/", function (req, res) {
 });
 
 app.get("/display", function (req, res) {
-    res.send("Fetching data...");
-    var data = fetchData(req, res);
-
+    // res.send("Fetching data...");
+    // var data = fetchData(req, res);
+    connection.query(
+        "SELECT * FROM name", function (err, data) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log(data);
+            res.json(data);
+        });
     // console.log("fetched data", data)
     // res.json(data);
 });
@@ -62,13 +69,13 @@ function addName(fn, ln) {
         });
 }
 
-function fetchData(req, res) {
-    connection.query(
-        "SELECT * FROM name", function (err, data) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log(data);
-            res.json(data);
-        });
-}
+// function fetchData(req, res) {
+//     connection.query(
+//         "SELECT * FROM name", function (err, data) {
+//             if (err) {
+//                 return console.log(err);
+//             }
+//             console.log(data);
+//             res.json(data);
+//         });
+// }
