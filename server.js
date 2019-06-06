@@ -16,8 +16,10 @@ app.get("/", function (req, res) {
 
 app.get("/display", function (req, res) {
     res.send("Fetching data...");
-    var data = fetchData();
-    res.json(data);
+    var data = fetchData(req, res);
+
+    // console.log("fetched data", data)
+    // res.json(data);
 });
 
 app.post("/addName", function (req, res) {
@@ -62,12 +64,11 @@ function addName(fn, ln) {
 
 function fetchData() {
     connection.query(
-        "SELECT * FROM name",
-        function (err, res) {
+        "SELECT * FROM name", function (err, data) {
             if (err) {
                 return console.log(err);
             }
-            console.log(res);
-            return res;
+            console.log(data);
+            res.json(data);
         });
 }
