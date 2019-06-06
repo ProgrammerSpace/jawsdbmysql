@@ -62,7 +62,7 @@ function addName(fn, ln) {
         });
 }
 
-function fetchData() {
+function fetchData(req, res) {
     connection.query(
         "SELECT * FROM name", function (err, data) {
             if (err) {
